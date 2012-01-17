@@ -47,6 +47,8 @@ class HeyWatch {
      **/
     static $api_location = 'http://heywatch.com/';
     
+	 private $format = 'xml';
+    
     /**
      * The construct for this API
      *
@@ -55,8 +57,9 @@ class HeyWatch {
      * @return void
      * @author Andreas Creten
      */
-    function __construct($username, $password) {
+    function __construct($username, $password,$format='xml') {
         $this->auth = $username.':'.$password;
+        $this->format = $format;
     }
     
     /**
@@ -361,6 +364,41 @@ class HeyWatch {
     function account() {
         return $this->api_call('account');
     }
+   
+     /**
+     * Download the video file converted to your custom path
+     *
+     * @return boolean true if download was done with success and false otherwise
+     * @author Daniel Gafitescu
+     */
+    public function saveVideoToPath($link,$path) {
+         $ch = curl_init();
+
+        // Set the target url
+        curl_setopt($ch, CURLOPT_URL, $link);
+        
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        
+        // Specify api credentials
+        curl_setopt($ch, CURLOPT_USERPWD, $this->auth);
+        
+        // Execute the curl request
+        $result = curl_exec($ch);
+        
+        if(curl_errno($ch)) {
+            log_message("error",'Curl error: ' . curl_error($ch));
+            return false;
+        } 
+        
+        // Close curl
+        curl_close($ch);
+        $success = file_put_contents($path, $result);
+        return ($success !==false);
+        
+    }
     
     /**
      * Do a call to the heywatch API
@@ -377,7 +415,8 @@ class HeyWatch {
         $ch = curl_init();
 
         // Set the target url
-        curl_setopt($ch, CURLOPT_URL, self::$api_location.$url.'.xml');
+        $curl_url = self::$api_location.$url.'.'.$this->format;
+        curl_setopt($ch, CURLOPT_URL, $curl_url);
         
         // Enable return transfer
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -405,12 +444,18 @@ class HeyWatch {
         if(!curl_errno($ch)) {
             // Get the http status code
             $http_status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        } else {
+            log_message("error",'Curl error: ' . curl_error($ch));
+            return false;
         }
         
         // Close curl
         curl_close($ch);
         
-        $this->log('in', $http_status.' '.$this->responses[$http_status]);
+     
+        if (isset($this->responses[$http_status])) {
+            $this->log('in', $http_status.' '.$this->responses[$http_status]);
+        }
         
         if(isset($http_status)) {
             if($http_status == 202 && $method == 'post') {
@@ -422,15 +467,25 @@ class HeyWatch {
         }
         
         if(!empty($result)) {
-            // Parse the response as an SimpleXML object
-            $xml = simplexml_load_string($result);
             
-            if(isset($xml['status']) && $xml['status'] == 'fail') {
-                return false;
-            }
-            
-            // Return the response
-            return $xml;
+            if ($this->format == 'xml') {
+                // Parse the response as an SimpleXML object
+                $xml = simplexml_load_string($result);
+
+                if(isset($xml['status']) && $xml['status'] == 'fail') {
+                    return false;
+                }
+
+                // Return the response
+                return $xml; 
+            } else {
+                $json = json_decode($result);
+                if(isset($json->status) && $json->status == 'fail') {
+                    return false;
+                }
+                // Return the response
+                return $json; 
+            }            
         }
         
         return false;
