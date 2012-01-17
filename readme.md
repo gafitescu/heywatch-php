@@ -10,6 +10,7 @@ Usage
 
 **Upload local video file to heywatch (step1)**
 
+
    public function step1(){
             set_time_limit(0);
             $username = '';
@@ -33,8 +34,11 @@ Usage
         }
         
         
+        
 
 **Create a format that a video should be converted to **
+
+
 
  public function step2(){
             $username = '';
@@ -68,7 +72,13 @@ Usage
 
 **Create a job that a certain video needs to be encoede with a certain video format defined **
 
+<<<<<<< HEAD
 public function step3(){
+=======
+
+
+    public function step3(){
+>>>>>>> Revert ffef6d24a375e3544a71d23df5cf64ffcf6796a6^..HEAD
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -83,10 +93,18 @@ public function step3(){
             echo "Job id = ".$job->id;
         }
 
+
+
      
 **Check to see if the job has finished **
 
+<<<<<<< HEAD
 public function step4(){
+=======
+
+
+  public function step4(){
+>>>>>>> Revert ffef6d24a375e3544a71d23df5cf64ffcf6796a6^..HEAD
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -108,7 +126,12 @@ public function step4(){
       
 **Download the video converted on a local path **
 
+<<<<<<< HEAD
 public function step5(){            
+=======
+
+ public function step5(){            
+>>>>>>> Revert ffef6d24a375e3544a71d23df5cf64ffcf6796a6^..HEAD
             set_time_limit(0);
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
