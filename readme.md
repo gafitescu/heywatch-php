@@ -8,8 +8,7 @@ The documentation of the API can be found at http://wiki.heywatch.com/API_Docume
 Usage
 -------------
 
-## Upload local video file to heywatch (step1)
--------------
+## Upload local video file to heywatch
 
 public function step1(){
             set_time_limit(0);
@@ -37,7 +36,6 @@ public function step1(){
         
 
 ## Create a format that a video should be converted to 
--------------
 
 public function step2(){
             $username = '';
@@ -70,7 +68,6 @@ public function step2(){
 
 
 ## Create a job that a certain video needs to be encoede with a certain video format defined
--------------
 
 public function step3(){
             $username = 'danielgafitescu';
@@ -91,7 +88,6 @@ public function step3(){
 
      
 ## Check to see if the job has finished
--------------
 
 public function step4(){
             $username = 'danielgafitescu';
@@ -114,7 +110,6 @@ public function step4(){
 
       
 ## Download the video converted on a local path
--------------
 
 public function step5(){         
             set_time_limit(0);
