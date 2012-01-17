@@ -37,6 +37,7 @@ Usage
         
 
 **Create a format that a video should be converted to **
+
  public function step2(){
             
             $username = '';
@@ -73,6 +74,7 @@ Usage
 
 
 **Create a job that a certain video needs to be encoede with a certain video format defined **
+
     public function step3(){
             
           
@@ -94,6 +96,7 @@ Usage
 
      
 **Check to see if the job has finished **
+
   public function step4(){
             
            
@@ -117,6 +120,7 @@ Usage
 
       
 **Download the video converted on a local path **
+
  public function step5(){
             
             set_time_limit(0);
