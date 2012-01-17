@@ -11,7 +11,7 @@ Usage
 ## Upload local video file to heywatch (step1)
 -------------
 
-   public function step1(){
+public function step1(){
             set_time_limit(0);
             $username = '';
             $password = '';
@@ -31,7 +31,7 @@ Usage
              } else {
                  echo 'invalid video path';
              }
-        }
+}
         
         
         
@@ -39,8 +39,7 @@ Usage
 ## Create a format that a video should be converted to 
 -------------
 
-
- public function step2(){
+public function step2(){
             $username = '';
             $password = '';
             $credentials = array("username"=>$username,
@@ -67,14 +66,13 @@ Usage
              $video_format = $this->heywatch->createFormat($name,$options);
             
              echo "Format id = ".$video_format->id;
-        }
+}
 
 
 ## Create a job that a certain video needs to be encoede with a certain video format defined
 -------------
 
-    public function step3(){
-
+public function step3(){
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -87,7 +85,7 @@ Usage
             $video_format_id = 7982;
             $job = $this->heywatch->createJob($video_id,$video_format_id);            
             echo "Job id = ".$job->id;
-        }
+}
 
 
 
@@ -95,7 +93,7 @@ Usage
 ## Check to see if the job has finished
 -------------
 
-  public function step4(){
+public function step4(){
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -112,14 +110,13 @@ Usage
             var_dump($job_info);
             
             echo "Job status : ".$job_info->status;
-        }
+}
 
       
 ## Download the video converted on a local path
 -------------
 
-public function step5(){            
-
+public function step5(){         
             set_time_limit(0);
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
