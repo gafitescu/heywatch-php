@@ -10,7 +10,7 @@ Usage
 
 ## Upload local video file to heywatch
 
-<blockquote>
+<code>
 public function step1(){
             set_time_limit(0);
             $username = '';
@@ -31,5 +31,5 @@ public function step1(){
                  echo 'invalid video path';
              }
 }
-</blockquote>     
+</code>     
         
