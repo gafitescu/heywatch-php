@@ -23,7 +23,6 @@ public function step1()
              $video_file = UPLOAD_PATH.'video/sample_video.avi';
              if (file_exists($video_file)) {
                 $var = $this->heywatch->upload($video_file);
-                echo '<pre>';
                 print_r($var);
              } else {
                  echo 'invalid video path';
