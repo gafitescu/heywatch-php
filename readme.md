@@ -8,8 +8,8 @@ The documentation of the API can be found at http://wiki.heywatch.com/API_Docume
 Usage
 -------------
 
-**Upload local video file to heywatch (step1)**
-
+## Upload local video file to heywatch (step1)
+-------------
 
    public function step1(){
             set_time_limit(0);
@@ -36,8 +36,8 @@ Usage
         
         
 
-**Create a format that a video should be converted to **
-
+## Create a format that a video should be converted to 
+-------------
 
 
  public function step2(){
@@ -70,15 +70,11 @@ Usage
         }
 
 
-**Create a job that a certain video needs to be encoede with a certain video format defined **
-
-<<<<<<< HEAD
-public function step3(){
-=======
-
+## Create a job that a certain video needs to be encoede with a certain video format defined
+-------------
 
     public function step3(){
->>>>>>> Revert ffef6d24a375e3544a71d23df5cf64ffcf6796a6^..HEAD
+
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -96,15 +92,10 @@ public function step3(){
 
 
      
-**Check to see if the job has finished **
-
-<<<<<<< HEAD
-public function step4(){
-=======
-
+## Check to see if the job has finished
+-------------
 
   public function step4(){
->>>>>>> Revert ffef6d24a375e3544a71d23df5cf64ffcf6796a6^..HEAD
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -124,14 +115,11 @@ public function step4(){
         }
 
       
-**Download the video converted on a local path **
+## Download the video converted on a local path
+-------------
 
-<<<<<<< HEAD
 public function step5(){            
-=======
 
- public function step5(){            
->>>>>>> Revert ffef6d24a375e3544a71d23df5cf64ffcf6796a6^..HEAD
             set_time_limit(0);
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
