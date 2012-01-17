@@ -11,14 +11,14 @@ Usage
 ## Upload local video file to heywatch
 
 <code>
-public function step1() {
+public function step1() 
+{
             set_time_limit(0);
             $username = '';
             $password = '';
             $credentials = array("username"=>$username,
                                  "password"=>$password,
-                                 "format"  => "xml" 
-                );
+                                 "format"  => "xml");
             $this->load->library('Heywatch',$credentials);
              $video_file = UPLOAD_PATH.'video/sample_video.avi';
              if (file_exists($video_file)) {
