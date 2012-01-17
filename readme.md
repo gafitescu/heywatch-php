@@ -68,7 +68,7 @@ Usage
 
 **Create a job that a certain video needs to be encoede with a certain video format defined **
 
-    public function step3(){
+public function step3(){
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -86,7 +86,7 @@ Usage
      
 **Check to see if the job has finished **
 
-  public function step4(){
+public function step4(){
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
             $credentials = array("username"=>$username,
@@ -108,7 +108,7 @@ Usage
       
 **Download the video converted on a local path **
 
- public function step5(){            
+public function step5(){            
             set_time_limit(0);
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
