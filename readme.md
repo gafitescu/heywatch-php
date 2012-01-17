@@ -19,7 +19,6 @@ public function step1(){
                                  "format"  => "xml" // at the moment for some reason the json format is not working on upload method
                 );
             $this->load->library('Heywatch',$credentials);
-            
             // upload video for conversion
              $video_file = UPLOAD_PATH.'video/sample_video.avi';
              if (file_exists($video_file)) {
@@ -45,8 +44,6 @@ public function step2(){
                                  "format"  => "json"
                 );
             $this->load->library('Heywatch',$credentials);
-            // create the encoding format
-             
              $name = 'iPad';
              $options  = array("category"=>"devices",
                                 "container"=>"mp4",
@@ -76,8 +73,6 @@ public function step3(){
                                  "password"=>$password,
                                   "format" =>"json");
             $this->load->library('Heywatch',$credentials);
-            
-            // create the job to encode
             $video_id  = 12924923;
             $video_format_id = 7982;
             $job = $this->heywatch->createJob($video_id,$video_format_id);            
@@ -96,11 +91,8 @@ public function step4(){
                                  "password"=>$password,
                                  "format"  =>"json");
             $this->load->library('Heywatch',$credentials);
-            
-            // create the job to encode
             $job_id  = 6640661;
-            $job_info = $this->heywatch->getJob($job_id);            
-              
+            $job_info = $this->heywatch->getJob($job_id);    
             echo 'Job information';
             echo '<pre>'; 
             var_dump($job_info);
@@ -120,13 +112,10 @@ public function step5(){
                                  "password"=>$password,
                                  "format"=>"json");
             $this->load->library('Heywatch',$credentials);
-            
-            // create the job to encode
             $encoded_video_id  = 12925768;
             $var = $this->heywatch->getEncodedVideo($encoded_video_id);       
             $link  = $var->link;
             $path =  UPLOAD_PATH.'video/converted/encoeded_heywatch_'.md5(time()).'.mp4';
-            
             $success =$this->heywatch->saveVideoToPath($link,$path);
             var_dump($success);
             
