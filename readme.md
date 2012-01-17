@@ -10,7 +10,7 @@ Usage
 
 ## Upload local video file to heywatch
 
-<code>
+<p>
 public function step1() 
 {
             set_time_limit(0);
@@ -28,5 +28,5 @@ public function step1()
                  echo 'invalid video path';
              }
 }
-</code>     
+</p>     
         
