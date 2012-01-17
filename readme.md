@@ -11,20 +11,18 @@ Usage
 ## Upload local video file to heywatch
 
 <code>
-public function step1(){
+public function step1() {
             set_time_limit(0);
             $username = '';
             $password = '';
             $credentials = array("username"=>$username,
                                  "password"=>$password,
-                                 "format"  => "xml" // at the moment for some reason the json format is not working on upload method
+                                 "format"  => "xml" 
                 );
             $this->load->library('Heywatch',$credentials);
-            // upload video for conversion
              $video_file = UPLOAD_PATH.'video/sample_video.avi';
              if (file_exists($video_file)) {
                 $var = $this->heywatch->upload($video_file);
-
                 echo '<pre>';
                 print_r($var);
              } else {
