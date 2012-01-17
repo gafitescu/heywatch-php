@@ -9,7 +9,7 @@ Usage
 -------------
 
 ## Upload local video file to heywatch
-``
+ <blockquote>
 public function step1(){
             set_time_limit(0);
             $username = '';
@@ -31,12 +31,12 @@ public function step1(){
                  echo 'invalid video path';
              }
 }
-``       
+</blockquote>     
         
         
 
 ## Create a format that a video should be converted to 
-``
+ <blockquote>
 public function step2(){
             $username = '';
             $password = '';
@@ -65,10 +65,10 @@ public function step2(){
             
              echo "Format id = ".$video_format->id;
 }
-``
+</blockquote>
 
 ## Create a job that a certain video needs to be encoede with a certain video format defined
-``
+ <blockquote>
 public function step3(){
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
@@ -83,12 +83,12 @@ public function step3(){
             $job = $this->heywatch->createJob($video_id,$video_format_id);            
             echo "Job id = ".$job->id;
 }
-``
+</blockquote>
 
 
      
 ## Check to see if the job has finished
-``
+ <blockquote>
 public function step4(){
             $username = 'danielgafitescu';
             $password = 'passwordvideo';
@@ -107,11 +107,11 @@ public function step4(){
             
             echo "Job status : ".$job_info->status;
 }
-``
+</blockquote>
       
 ## Download the video converted on a local path
 
-``
+ <blockquote>
 public function step5(){         
             set_time_limit(0);
             $username = 'danielgafitescu';
@@ -131,4 +131,4 @@ public function step5(){
             var_dump($success);
             
         }
-``        
+</blockquote>     
